@@ -1,0 +1,335 @@
+$sidebar-width: 320px;
+$max-image-height: 640px;
+@import "colors";
+@import "fonts";
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Default Regular Font", "Tahoma", sans-serif;
+}
+
+body {
+  font-size: $default-font-size;
+}
+
+.shutter {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  z-index: 65535;
+
+  table.shutter-table {
+    width: 100%;
+    height: 100%;
+
+    td {
+      text-align: center;
+    }
+  }
+}
+
+.row.full {
+  max-width: 100%;
+  margin-left: 10px;
+  padding-right: 10px;
+}
+
+div.upload-container {
+  &:disabled {
+    background-color: $grey-10;
+  }
+
+  div.file-upload {
+    position: relative;
+    overflow: hidden;
+    width: 225px;
+    margin-bottom: 0;
+
+    &:disabled {
+      background-color: $grey-10;
+      cursor: not-allowed;
+    }
+
+    input.file-input {
+      position: absolute;
+      top: 0;
+      right: 0;
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      cursor: pointer;
+      opacity: 0;
+      filter: alpha(opacity=0);
+
+      &:disabled {
+        background-color: $grey-10;
+      }
+    }
+  }
+}
+
+.text-error {
+  color: $red-light;
+}
+
+div.error {
+  background-color: $red-light;
+}
+
+div.success {
+  background-color: $green-light;
+}
+
+div.progress {
+  background-color: $yellow-light;
+}
+
+div.block-right {
+  float: right;
+}
+
+div.row-margin-bottom {
+  margin-bottom: 0.9375em;
+}
+
+aside.left-off-canvas-menu {
+  box-shadow: 1px 0 5px 0 rgba(0, 0, 0, 0.16),
+  1px 0 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+div.drop-area {
+  &.drag-hover {
+    color: $white;
+    background-color: $blue-light;
+  }
+  &.drag-drop {
+    color: $white;
+    background-color: $grey-10;
+  }
+}
+
+div.user {
+  transition: all 0.2s ease;
+
+  a {
+    color: $blue-light;
+  }
+  a:hover {
+    color: $blue-dark;
+    border-bottom: 1px solid $blue-dark;
+  }
+}
+
+table.simple {
+  width: 100%;
+  border: 0;
+  margin-bottom: 0;
+}
+
+div.slide.row {
+  h6 {
+    padding-top: 0.35rem;
+  }
+  .range-slider {
+    margin: 0.7rem 0;
+  }
+
+  input.options-range {
+    width: 55px;
+  }
+}
+
+div.groups.row {
+  .switch {
+    margin-bottom: 0.5rem;
+  }
+}
+
+.inner-wrap {
+  width: auto;
+
+  div.vertical {
+    width: 100%;
+  }
+
+  aside.left-off-canvas-menu {
+    background-color: $white;
+    color: $grey-0;
+    //border-right: 1px solid $blue-light;
+
+    div.user-photo {
+      overflow: hidden;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      float: left;
+    }
+
+    div.user-info {
+      margin-left: 64px;
+      height: 50px;
+    }
+
+    img.photo {
+      width: 50px;
+    }
+
+    div.block {
+      padding: 16px;
+      border-bottom: 1px solid rgba(160, 160, 160, 0.2);
+
+      button {
+        margin-bottom: 0;
+      }
+
+      div.text {
+        padding-bottom: 8px;
+      }
+    }
+
+    div.item {
+      cursor: pointer;
+      padding: 16px;
+      -webkit-transition: all 0.2s ease;
+      transition: all 0.2s ease;
+      color: $grey-2;
+
+      &:hover {
+        background-color: $blue-light;
+        color: $white;
+      }
+
+      &.active {
+        cursor: auto;
+        background-color: $blue-light;
+        color: $white;
+      }
+    }
+  }
+}
+
+.card {
+  overflow: hidden;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  color: $grey-0;
+  border-radius: 2px;
+  margin-top: 0.9375rem;
+  background-color: $white;
+  .title {
+    font-family: "Default Bold Font", "Tahoma", sans-serif;
+    line-height: 2.8rem;
+    font-size: 1.2rem;
+    font-weight: 300;
+    bottom: 0;
+    left: 0;
+    padding: 1.3rem;
+  }
+  .content {
+    padding: 1.3rem;
+    font-weight: 300;
+    border-radius: 0 0 2px 2px;
+  }
+  p {
+    margin: 0;
+  }
+  label.tiny {
+    font-size: 1rem;
+  }
+  .action {
+    border-top: 1px solid rgba(160, 160, 160, 0.2);
+    padding: 1.3rem;
+    a {
+      color: $yellow-darker;
+      margin-right: 1.3rem;
+      transition: color 0.1s ease;
+      text-transform: lowercase;
+      text-decoration: none;
+      &:hover {
+        color: $yellow-light;
+      }
+    }
+    .image {
+      max-height: $max-image-height;
+    }
+  }
+  .image {
+    position: relative;
+    .title {
+      position: absolute;
+    }
+    img {
+      border-radius: 2px 2px 0 0;
+    }
+  }
+  .headline {
+    border-bottom: 1px solid rgba(160, 160, 160, 0.2);
+    position: relative;
+    text-transform: lowercase;
+  }
+  input[data-toggle] {
+    display: none;
+  }
+  input[data-toggle] + label {
+    background-color: $grey-10;
+  }
+  input[data-toggle]:checked + label,
+  input[data-toggle]:checked + label:active {
+    background-color: $blue-light;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15) inset,
+    0 1px 2px rgba(0, 0, 0, 0.05);
+  }
+  .button-group.toggle {
+    li:not(first-child) {
+      margin: 0 -0.9rem;
+    }
+  }
+}
+
+.move-right .inner-wrap {
+  -ms-transform: none;
+  -webkit-transform: none;
+  -moz-transform: none;
+  -ms-transform: none;
+  -o-transform: none;
+  transform: none;
+  margin-left: $sidebar-width;
+}
+
+.left-off-canvas-menu {
+  -ms-transform: none;
+  -webkit-transform: none;
+  -moz-transform: none;
+  -ms-transform: none;
+  -o-transform: none;
+  transform: none;
+  position: fixed;
+  width: 0;
+  height: 100%;
+}
+
+.move-right .left-off-canvas-menu {
+  width: $sidebar-width;
+  color: $grey-0;
+}
+
+.move-right .exit-off-canvas {
+  display: none;
+}
+
+.left-off-canvas-toggle {
+  display: none;
+  margin-top: 1rem;
+  margin-left: 1rem;
+  font-size: 3rem;
+  color: $grey-0;
+  transition: all .25s ease-in-out;
+
+  &:focus {
+    color: $grey-0;
+  }
+
+  &:hover {
+    color: lighten($grey-0, 35%);
+    transition: all .25s ease-in-out;
+  }
+}

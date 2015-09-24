@@ -1,0 +1,16 @@
+<script type="text/template" class="template-menu-files">
+    <% _.each(_.values(user.files).reverse(), function (current) { %>
+    <a href="/file/<%= current.id %>">
+        <div
+                class="item file <%= (typeof file !== 'undefined' && file.id === current.id) ? 'active' : '' %>"
+                data-id="<%= current.id %>"
+                data-name="<%= current.name %>"
+                data-size="<%= current.size %>"
+                data-type="<%= current.type %>"
+                >
+            <span><i class="fa fa-file-text"></i> <%= current.name %></span>
+            <div class="block-right hide percentage"></div>
+        </div>
+    </a>
+    <% }) %>
+</script>

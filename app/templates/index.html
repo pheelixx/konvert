@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<!--[if IE 9]><html class="lt-ie10" lang="en"><![endif]-->
+<html class="no-js" lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="description" content="File converter">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Konvert | File Converter Service</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='production.css') }}">
+        <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}"/>
+        <script type="text/template" class="page-data">{{jsoned|safe}}</script>
+    </head>
+    <body>
+        <div id="download"></div>
+        <div class="shutter">
+            <table class="shutter-table"><tr>
+                <td class="shutter-content"><img src="/images/preloader.gif"><h1>Loading...</h1></td>
+            </tr></table>
+        </div>
+        <div class="off-canvas-wrap move-right font-regular" data-offcanvas>
+            <div class="inner-wrap">
+                <a class="left-off-canvas-toggle" href="#"><i class="fa fa-bars"></i></a>
+                <aside class="left-off-canvas-menu">
+                    <div class="vertical">
+                        <div class="menu-user"></div>
+                        {% include 'template/menu-user.html' %}
+                        <div class="menu-upload"></div>
+                        {% include 'template/menu-upload.html' %}
+                        <div class="menu-files"></div>
+                        {% include 'template/menu-files.html' %}
+                    </div>
+                </aside>
+                <div class="row full">
+                    {% include view %}
+                </div>
+                <a class="exit-off-canvas"></a>
+            </div>
+        </div>
+        <script type="application/javascript" src="{{ url_for('static', filename='production.js') }}"></script>
+    </body>
+{% include 'modal/authorization.html' %}
+</html>

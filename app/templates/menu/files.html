@@ -1,0 +1,15 @@
+<div class="files">
+    {% for current in user.files %}
+    <a href="#">
+        <div
+                class="item file {% if file %}{{'active' if file.id == current.id}}{% endif %}"
+                data-id="{{current.id}}"
+                data-name="{{current.name}}"
+                data-size="{{current.size}}"
+                data-type="{{current.type}}"
+                >
+            <span><i class="fa fa-file-text"></i> {{current.name}}</span>
+        </div>
+    </a>
+    {% endfor %}
+</div>

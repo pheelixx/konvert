@@ -1,0 +1,6 @@
+<h1>Not found</h1>
+{% if error is not none %}
+<h2>Error: {{error}}</h2>
+{% endif %}
+
+<a href="{{ url_for('index') }}">Back</a>

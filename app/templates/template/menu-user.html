@@ -1,0 +1,21 @@
+<script type="text/template" class="template-menu-user">
+    <div class="block">
+        <div class="user">
+            <div class="user-photo"><img class="photo" src="<%= user.photo %>"/></div>
+            <div class="user-info">
+                <a href="/user/<%= user.id %>"> {{user.name}}</a>
+                <% if (user.id > 0) { %>
+                <div class="block-right"><a href="/logout">Log out</a></div>
+                <% } else { %>
+                <div class="block-right"><a href="#" data-reveal-id="modal-registration">Log in</a></div>
+                <% } %>
+                <div class="user-info-second">
+                    <i class="fa fa-files-o"></i>&nbsp;&nbsp;<%= user.files_count %> / 15 &nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;<i class="fa fa-hdd-o"></i>&nbsp;&nbsp;<%= user.files_size %> MB
+                </div>
+            </div>
+        </div>
+        <input type="hidden" class="user-key" value="<%= user.key %>" />
+        <input type="hidden" class="current-file" value="<%= (typeof file !== 'undefined') ? file.id : 0 %>" />
+    </div>
+</script>

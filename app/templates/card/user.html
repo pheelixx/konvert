@@ -1,0 +1,45 @@
+<div class="card">
+    <div class="headline">
+        <span class="title">user</span>
+    </div>
+    <div class="content">
+        <table class="simple font-monospaced">
+            <thead>
+            <tr>
+                <th>Parameter</th>
+                <th>Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Identifier</td>
+                <td>{{user.id}}</td>
+            </tr>
+            <tr>
+                <td>Name</td>
+                <td>{{user.name}}</td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td>{{user.email}}</td>
+            </tr>
+            <tr>
+                <td>API key</td>
+                <td>{{user.key}}</td>
+            </tr>
+            <tr>
+                <td>Files</td>
+                <td>{{user.get_files_count()}} / 15</td>
+            </tr>
+            <tr>
+                <td>Disk space</td>
+                <td>{{user.get_files_size()}} / 200 MB</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="action">
+        <a href='#'>show api key</a>
+        <a href='#'>generate new api key</a>
+    </div>
+</div>

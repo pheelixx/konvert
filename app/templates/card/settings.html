@@ -1,0 +1,152 @@
+<div class="card settings">
+    <div class="headline">
+        <span class="title">settings</span>
+    </div>
+    <div class="content">
+        <div class="row">
+            <div class="large-4 columns">
+                <h6>Format</h6>
+            </div>
+            <div class="large-8 columns">
+                <div class="row-margin-bottom">
+                    <ul class="button-group radius text-right toggle" data-toggle="buttons-radio">
+                        {% for extension in settings.keys() %}
+                        <li>
+                            <input
+                                    class="setting-value"
+                                    data-setting-name="extension"
+                                    type="radio"
+                                    id="format-{{extension}}-file-{{file.id}}"
+                                    name="format-group"
+                                    data-toggle="button"
+                                    value="{{extension}}"
+                                    {{'checked' if extension == selected}}
+                            />
+                            <label class="tiny button" for="format-{{extension}}-file-{{file.id}}">{{extension}}</label>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="settings-content">
+            {% for name, current in settings[selected]['FilterData'].items() %}
+            {% if current.type == 'range' %}
+            <div class="row">
+                <div class="large-4 columns">
+                    <h6>{{current.label}}</h6>
+                </div>
+                <div class="large-3 columns">
+                    <input
+                            class="setting-value"
+                            data-setting-name="{{name}}"
+                            type="number"
+                            min="{{current.min}}"
+                            max="{{current.max}}"
+                            value="{{current.min}}"
+                            />
+                </div>
+                <div class="large-1 columns">
+                    <h6> to </h6>
+                </div>
+                <div class="large-4 columns">
+                    <input
+                            class="setting-value"
+                            data-setting-name="{{name}}"
+                            type="number"
+                            min="{{current.min}}"
+                            max="{{current.max}}"
+                            value="{{current.max}}"
+                            />
+                </div>
+            </div>
+            {% endif %}
+
+            {% if current.type == 'slide' %}
+            <div class="slide row">
+                <div class="large-4 columns">
+                    <h6>{{current.label}}</h6>
+                </div>
+                <div class="large-6 columns">
+                    <div
+                            class="range-slider"
+                            data-slider
+                            data-options="display_selector: .slider-{{name.lower()}}; initial: {{current.default}};"
+                            >
+                        <span class="range-slider-handle" role="slider" tabindex="0"></span>
+                        <span class="range-slider-active-segment"></span>
+                    </div>
+                </div>
+                <div class="large-2 columns">
+                    <input
+                            class="slider-{{name.lower()}} options-range setting-value"
+                            data-setting-name="{{name}}"
+                            type="number"
+                            min="{{current.min}}"
+                            max="{{current.max}}"
+                            value="{{current.default}}"
+                            />
+                </div>
+            </div>
+            {% endif %}
+
+            {% if current.type == 'boolean' %}
+            <div class="row">
+                <div class="large-10 columns">
+                    <h6>{{current.label}}</h6>
+                </div>
+                <div class="large-2 columns">
+                    <div class="switch small">
+                        <input
+                                class="setting-value"
+                                data-setting-name="{{name}}"
+                                id="switch-{{name}}"
+                                type="checkbox"
+                                {{'checked' if current.default == True}}
+                        />
+                        <label for="switch-{{name}}"></label>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+
+            {% if current.type == 'string' %}
+            <div class="row">
+                <div class="large-4 columns">
+                    <h6>{{current.label}}</h6>
+                </div>
+                <div class="large-8 columns">
+                    <input
+                            class="setting-value"
+                            data-setting-name="{{name}}"
+                            type="text"
+                            value="{{current.default}}"
+                            />
+                </div>
+            </div>
+            {% endif %}
+
+            {% if current.type == 'select' %}
+            <div class="slide row">
+                <div class="large-6 columns">
+                    <h6>{{current.label}}</h6>
+                </div>
+                <div class="large-6 columns">
+                    <select class="setting-value" data-setting-name="{{name}}">
+                        {% for key, value in current.options.items() | sort() %}
+                        <option value="{{key}}" {{'selected' if key == current.default}}>{{value}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="action">
+        <a href='#' class="button-convert">convert only</a>
+        <a href='#' class="button-convert-download">convert and download</a>
+    </div>
+</div>

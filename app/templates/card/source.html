@@ -1,0 +1,28 @@
+<div class="card">
+    <div class="headline">
+        <span class="title">source file</span>
+    </div>
+    <div class="content">
+        <table class="simple font-monospaced">
+            <thead>
+            <tr>
+                <th>Parameter</th>
+                <th>Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for key, value in file.get_source().iteritems() %}
+            <tr>
+                <td>{{key}}</td>
+                <td>{{value}}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="action">
+        <a href='#'>download</a>
+        <a href='#'>edit</a>
+        <a href='#'>delete</a>
+    </div>
+</div>

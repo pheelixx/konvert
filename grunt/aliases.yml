@@ -1,0 +1,19 @@
+default:
+  description: 'Default (production) build'
+  tasks:
+    - production
+development:
+  description: 'Development build'
+  tasks:
+    - 'concurrent:developmentFirst'
+    - 'concurrent:developmentSecond'
+production:
+  description: 'Production build'
+  tasks:
+    - 'concurrent:productionFirst'
+    - 'concurrent:productionSecond'
+    - 'concurrent:productionThird'
+make-coffee:
+  description: 'CoffeeScript Compiling'
+  tasks:
+    - 'coffee:production'
