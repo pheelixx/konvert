@@ -42,22 +42,8 @@ $(function () {
             type: ''
         }
     });
-
     var Files = Backbone.Collection.extend({});
     var files = new Files();
-
-    //var FileView = Backbone.View.extend({
-    //    model: new File(),
-    //    initialize: function () {
-    //        this.template = _.template($('.files-list-template').html());
-    //    },
-    //    render: function () {
-    //        var model = this.model.toJSON();
-    //        model.current = parseInt($('input.current-file').val());
-    //        this.$el.html(this.template(model));
-    //        return this;
-    //    }
-    //});
 
     var FilesView = Backbone.View.extend({
         model: files,
@@ -256,7 +242,6 @@ $(function () {
         initialize: function () {
             this.$el.foundation();
             var toggleSideMenuWidth = 769;
-
             function sideNav() {
                 if ($(window).width() < toggleSideMenuWidth) {
                     $('.off-canvas-wrap').removeClass('move-right');
@@ -266,11 +251,9 @@ $(function () {
                     $('.left-off-canvas-toggle').hide();
                 }
             }
-
             $(window).resize(function () {
                 sideNav();
             });
-
             $(function () {
                 var translate = function (source, target, post_class) {
                     $.post('/translate', {
@@ -282,7 +265,6 @@ $(function () {
                     })
                 };
             });
-
             shutter.hide();
         }
     });

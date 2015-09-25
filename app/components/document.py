@@ -67,13 +67,14 @@ class Document:
     def __init__(self, path):
         self.path = path
         context = uno.getComponentContext()
-        resolver = context.ServiceManager.createInstanceWithContext(Document.resolver_instance, context)
+        resolver = context.ServiceManager\
+            .createInstanceWithContext(Document.resolver_instance, context)
         context = resolver.resolve(Document.connection_string)
         desktop = context.ServiceManager.createInstanceWithContext("com.sun.star.frame.Desktop", context)
         self.document = desktop.loadComponentFromURL(uno.systemPathToFileUrl(abspath(path)), "_blank", 0, tuple([]))
         if hasattr(self.document, 'getArgs'):
             documentProperties = self.document.getDocumentProperties()
-            if len(documentProperties) is not 0:
+            if hasattr(documentProperties, 'DocumentStatistics') is not 0:
                 statistics = documentProperties.DocumentStatistics
                 for current in statistics:
                     self.statistics[current.Name] = current.Value
@@ -185,6 +186,11 @@ class Document:
                         'min': 1,
                         'max': 100,
                         'default': 90
+                    },
+                    'ReduceImageResolution': {
+                        'type': 'boolean',
+                        'label': 'Reduce Image Resolution',
+                        'default': True
                     },
                     'MaxImageResolution': {
                         'type': 'select',

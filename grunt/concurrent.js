@@ -26,8 +26,5 @@ module.exports = {
     productionThird: [
         'concat:productionStyles',
         'concat:productionScripts'
-    ],
-    coffeeCompile: [
-        'coffee:compltf'
     ]
 };

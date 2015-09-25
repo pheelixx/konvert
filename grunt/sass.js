@@ -35,7 +35,7 @@ module.exports = {
         }, {
             expand: true,
             cwd: 'app/static/sass',
-            src: ['*.scss'],
+            src: ['*.scss', '*.sass'],
             dest: 'app/static/dist/css',
             ext: '.css'
         }]

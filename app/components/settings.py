@@ -92,7 +92,3 @@ class Settings():
         'image/png': 'png',
         'image/bmp': 'bmp',
     }
-
-    allowed = {
-
-    }

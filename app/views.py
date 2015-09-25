@@ -27,7 +27,6 @@ def images(file):
 
 
 @app.route('/')
-@app.route('/index')
 def index():
     user = g.user
     if user.get_id() is None:
@@ -88,7 +87,7 @@ def upload():
     return jsonify(Tools.upload())
 
 
-@app.route('/delete/<id>', methods=['GET', 'POST'])
+@app.route('/delete/<int:id>', methods=['DELETE'])
 def delete(id):
     key = False
     deleted = False
@@ -210,7 +209,7 @@ def login_twitter():
     return twitter.authorize(callback=url_for('authorized'))
 
 
-@app.route('/login/vk', methods=['GET', 'POST'])
+@app.route('/login/vk')
 def login_vk():
     url = 'authorized_with_vk'
     next = request.args.get('next') or request.referrer or None
@@ -218,7 +217,7 @@ def login_vk():
     return vk.authorize(callback=callback)
 
 
-@app.route('/login/fb', methods=['GET', 'POST'])
+@app.route('/login/fb')
 def login_facebook():
     url = 'authorized_with_facebook'
     next = request.args.get('next') or request.referrer or None
